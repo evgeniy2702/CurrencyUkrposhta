@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currency</title>
+    <link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+          th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" >
+</head>
+<body>
+
+<h3>
+    Курс валюты и драгоценных металов на дату :  <span th:text="${date}"> 26.07.2021</span>
+</h3>
+<form th:id="linkForm" th:action="@{~/exchange/valcode/day}"  th:method="post" >
+
+    <label id="day" >Введите дату : </label>
+    <input  th:name="day" type="date"/>
+
+
+    <select th:form="linkForm" th:name="valcode" >
+        <option selected="selected" >Выберите валюту !</option>
+        <option  th:each="valcode : ${cc}" th:text="${valcode}" ></option>
+    </select>
+
+
+    <input type="submit" th:form="linkForm" value="Отправить" class="blue-button" />
+</form>
+
+<a th:href="@{~/exchange}">Курс валют и драгоценных металов на текущею дату !</a>
+
+
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Месяцы года</div>
+                <div class="panel-body">
+                    <table class="table table-striped" border="1" >
+                        <tbody>
+                        <tr>
+                            <th id="r030">Код валюты</th>
+                            <th id="txt">Наименование валюты</th>
+                            <th id="rate">Курс, грн</th>
+                            <th id="cc">Обозначение</th>
+                            <th id="exchangedate">Exchangedate</th>
+                        </tr>
+
+                        <!-- $scope.month -->
+
+                        <tr th:each="currency : ${exchange}">
+                            <td th:text="${currency.getR030()}"> </td>
+                            <td th:text="${currency.getTxt()}"> </td>
+                            <td th:text="${currency.getRate()}"> </td>
+                            <td th:text="${currency.getCc()}"> </td>
+                            <td th:text="${currency.getExchangedate()}"> </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
