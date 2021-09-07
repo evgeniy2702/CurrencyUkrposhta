@@ -14,14 +14,9 @@ import ua.ukrposhta.currency.service.CurrencyService;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 
